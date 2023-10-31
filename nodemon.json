@@ -1,0 +1,6 @@
+{
+    "watch": ["./golang/*", "./nodejs/*"],
+    "ignore": [".git", "Makefile"],
+    "exec": "TKPENV=development go run golang/*.go",
+    "ext": "js ts go"
+  }

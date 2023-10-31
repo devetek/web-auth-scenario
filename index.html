@@ -1,0 +1,25 @@
+<htm>
+  <head>
+    <title>Client Login Page</title>
+  </head>
+  <body>
+    <button onclick="onClickFunction()">Login</button>
+    <script>
+      function onClickFunction() {
+        fetch("http://localhost:3000/provider", { redirect: "follow" })
+          .then((response) => {
+            // HTTP 301 response
+            // HOW CAN I FOLLOW THE HTTP REDIRECT RESPONSE?
+            // if (response.redirected) {
+            //   window.location.href = response.url;
+            // }
+            console.log(response);
+            console.log(response.redirected);
+          })
+          .catch(function (err) {
+            console.info(err + " url: " + url);
+          });
+      }
+    </script>
+  </body>
+</htm>

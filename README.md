@@ -16,3 +16,8 @@ To run nodejs: `make run-nodejs`
 Then open http://localhost:3000/ , open your browser developer tools. And check in tab Console to check the data. 
 
 <img src="images/view-login.png" />
+
+## References
+
+- [HTTP rfc7231](https://datatracker.ietf.org/doc/html/rfc7231#section-7.1.2)
+- [Node Fetch API](https://javascript.info/fetch-api#redirect)

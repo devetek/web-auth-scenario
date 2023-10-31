@@ -1,6 +1,17 @@
 <htm>
   <head>
     <title>Client Login Page</title>
+    <script>
+      function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(";").shift();
+      }
+
+      if (getCookie("session")) {
+        window.location.replace("/profile");
+      }
+    </script>
   </head>
   <body>
     <button onclick="onClickFunction()">Login</button>
@@ -11,7 +22,12 @@
           .then((response) => {
             // THIS RESPONSE COME FROM CLIENT / CONSUMER CALLBACK URL
             // URL PROVIDE FROM PROVIDER BY USING HTTP STANDRD RFC LOCATION
-            console.log(response);
+            console.log(response.status);
+
+            if (response.status === "OK") {
+              console.log("Lets go to profile page");
+              window.location.replace("/profile");
+            }
           })
           .catch(function (err) {
             console.info("error: ", err);

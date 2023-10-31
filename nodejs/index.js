@@ -40,6 +40,17 @@ const server = http.createServer(async (req, res) => {
     res.write(jsonContent);
   }
 
+  if (req.url === "/profile") {
+    res.writeHead(200, {
+      "Content-Type": "text/html;charset=utf-8",
+      "Cache-Control": "no-cache, no-store, must-revalidate, no-transform",
+    });
+
+    const file = fs.readFileSync("./profile.html");
+
+    res.write(file);
+  }
+
   res.end();
 });
 

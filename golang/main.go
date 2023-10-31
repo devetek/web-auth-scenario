@@ -47,11 +47,28 @@ func callbackPage(w http.ResponseWriter, req *http.Request) {
 	return
 }
 
+func profilePage(w http.ResponseWriter, req *http.Request) {
+	w.Header().Add("Content-Type", "text/html;charset=utf-8")
+	w.Header().Add("Cache-Control", "no-cache, no-store, must-revalidate, no-transform")
+
+	var tmpl, err = template.ParseFiles("./profile.html")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	err = tmpl.Execute(w, nil)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
+
 func main() {
 
 	http.HandleFunc("/", homePage)
 	http.HandleFunc("/provider", providerPage)
 	http.HandleFunc("/callback", callbackPage)
+	http.HandleFunc("/profile", profilePage)
 
 	http.ListenAndServe(":3000", nil)
 }

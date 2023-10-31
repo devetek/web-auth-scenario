@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/devetek/web-auth-scenario.git",
-  "author": "prakasa-tkpd <nedya.prakasa@tokopedia.com>",
+  "author": "prakasa1904 <prakasa@devetek.com>",
   "license": "MIT",
   "devDependencies": {
     "nodemon": "^3.0.1"

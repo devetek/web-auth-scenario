@@ -17,22 +17,27 @@ const server = http.createServer(async (req, res) => {
   if (req.url === "/provider") {
     res.writeHead(301, {
       "Content-Type": "text/html;charset=utf-8",
-      Location: "/callback",
+      Location: "/callback?client_id=1&token=1001&provider=nodesjs",
       "Cache-Control": "no-cache, no-store, must-revalidate, no-transform",
     });
   }
 
-  if (req.url === "/callback") {
+  if (req.url.includes("/callback")) {
     res.writeHead(200, {
       "Set-Cookie": `session=nedya-amril-prakasa-nodejs`,
-      "Content-Type": "text/html;charset=utf-8",
+      "Content-Type": "application/json;charset=utf-8",
       "Cache-Control": "no-cache, no-store, must-revalidate, no-transform",
       "Cache-Control": "no-cache, no-store, must-revalidate, no-transform",
     });
 
-    const file = fs.readFileSync("./callback.html");
+    const responseStatus = {
+      message: "welcome Nakama in nodeJS",
+      status: 'OK'
+    };
 
-    res.write(file);
+    const jsonContent = JSON.stringify(responseStatus);
+
+    res.write(jsonContent);
   }
 
   res.end();

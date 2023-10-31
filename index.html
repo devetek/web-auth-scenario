@@ -7,17 +7,14 @@
     <script>
       function onClickFunction() {
         fetch("http://localhost:3000/provider", { redirect: "follow" })
+          .then((res) => res.json())
           .then((response) => {
-            // HTTP 301 response
-            // HOW CAN I FOLLOW THE HTTP REDIRECT RESPONSE?
-            // if (response.redirected) {
-            //   window.location.href = response.url;
-            // }
+            // THIS RESPONSE COME FROM CLIENT / CONSUMER CALLBACK URL
+            // URL PROVIDE FROM PROVIDER BY USING HTTP STANDRD RFC LOCATION
             console.log(response);
-            console.log(response.redirected);
           })
           .catch(function (err) {
-            console.info(err + " url: " + url);
+            console.info("error: ", err);
           });
       }
     </script>

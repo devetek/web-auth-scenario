@@ -1,0 +1,6 @@
+{
+    "watch": ["./golang/*", "./nodejs/*", "./**.html"],
+    "ignore": [".git", "Makefile"],
+    "exec": "go run golang/*.go",
+    "ext": "js ts go html"
+  }

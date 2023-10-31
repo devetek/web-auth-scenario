@@ -1,9 +1,8 @@
-run-nodejs:
-	node nodejs/index.js
+.init:
+	@npm install -g nodemon
 
-run-golang:
-	go run golang/main.go
+run-nodejs: .init
+	@nodemon --signal SIGTERM --config nodemon-nodejs.json
 
-
-run-hotreload:
-	nodemon --signal SIGTERM
+run-golang: .init
+	@nodemon --signal SIGTERM --config nodemon-golang.json

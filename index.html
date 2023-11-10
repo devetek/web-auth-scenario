@@ -16,6 +16,24 @@
   <body>
     <button onclick="onClickFunction()">Login</button>
     <script>
+      var console = console
+      console.stdlog = console.log.bind(console);
+      console.logs = [];
+      console.log = function(){
+          console.logs.push(Array.from(arguments));
+          console.stdlog.apply(console, arguments);
+      }
+
+      console.error = function(){
+          console.logs.push(Array.from(arguments));
+          console.stdlog.apply(console, arguments);
+      }
+
+      // console.info = function (text,  ...args) {
+        
+      //   alert(text + args.join(","));
+      // }
+
       function onClickFunction() {
         fetch("http://localhost:3000/provider", { redirect: "follow" })
           .then((res) => res.json())
@@ -30,6 +48,11 @@
             }
           })
           .catch(function (err) {
+            if (err.message.includes('Failed to fetch')) {
+              fetch("http://localhost:3000/provider", { mode: "no-cors" })
+                .then(res => console.log("res", res))
+                .catch(err=>console.log("when issue with cors", err));
+            }
             console.info("error: ", err);
           });
       }
